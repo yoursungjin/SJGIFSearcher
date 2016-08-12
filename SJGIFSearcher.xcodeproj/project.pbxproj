@@ -1,0 +1,660 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		817562E61D590AFF005907C9 /* SJNetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817562E51D590AFF005907C9 /* SJNetworkingClient.swift */; };
+		81BE018B1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BE018A1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift */; };
+		AD34FC381D5C2AB50019E415 /* SJTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34FC371D5C2AB50019E415 /* SJTableViewController.swift */; };
+		AD34FC3A1D5C2AF60019E415 /* SJDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34FC391D5C2AF60019E415 /* SJDetailViewController.swift */; };
+		AD65CB521D56F271001110B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD65CB511D56F271001110B1 /* AppDelegate.swift */; };
+		AD65CB571D56F271001110B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD65CB551D56F271001110B1 /* Main.storyboard */; };
+		AD65CB5A1D56F271001110B1 /* SJGIFSearcher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD65CB581D56F271001110B1 /* SJGIFSearcher.xcdatamodeld */; };
+		AD65CB5C1D56F271001110B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD65CB5B1D56F271001110B1 /* Assets.xcassets */; };
+		AD65CB5F1D56F271001110B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD65CB5D1D56F271001110B1 /* LaunchScreen.storyboard */; };
+		AD65CB6A1D56F272001110B1 /* SJGIFSearcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD65CB691D56F272001110B1 /* SJGIFSearcherTests.swift */; };
+		AD65CB751D56F272001110B1 /* SJGIFSearcherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD65CB741D56F272001110B1 /* SJGIFSearcherUITests.swift */; };
+		AD84C7571D5833BF003ECEDE /* SJGIFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C7561D5833BE003ECEDE /* SJGIFModel.swift */; };
+		AD84C75C1D5833E7003ECEDE /* SJGIFViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD84C75B1D5833E7003ECEDE /* SJGIFViewModel.swift */; };
+		C3732E68BA7DF39DF5DD9C2D /* Pods_SJGIFSearcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83E758A400DC6ADC1A71B8 /* Pods_SJGIFSearcher.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AD65CB661D56F272001110B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD65CB461D56F270001110B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD65CB4D1D56F270001110B1;
+			remoteInfo = SJGIFSearcher;
+		};
+		AD65CB711D56F272001110B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD65CB461D56F270001110B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AD65CB4D1D56F270001110B1;
+			remoteInfo = SJGIFSearcher;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		817562E51D590AFF005907C9 /* SJNetworkingClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJNetworkingClient.swift; sourceTree = "<group>"; };
+		81BE018A1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJGIFTableViewCell.swift; sourceTree = "<group>"; };
+		9F082A6DF29345B067822D2E /* Pods-SJGIFSearcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJGIFSearcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SJGIFSearcher/Pods-SJGIFSearcher.debug.xcconfig"; sourceTree = "<group>"; };
+		AD34FC371D5C2AB50019E415 /* SJTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJTableViewController.swift; sourceTree = "<group>"; };
+		AD34FC391D5C2AF60019E415 /* SJDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJDetailViewController.swift; sourceTree = "<group>"; };
+		AD65CB4E1D56F270001110B1 /* SJGIFSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJGIFSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD65CB511D56F271001110B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AD65CB561D56F271001110B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD65CB591D56F271001110B1 /* SJGIFSearcher.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SJGIFSearcher.xcdatamodel; sourceTree = "<group>"; };
+		AD65CB5B1D56F271001110B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AD65CB5E1D56F271001110B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AD65CB601D56F271001110B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD65CB651D56F272001110B1 /* SJGIFSearcherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SJGIFSearcherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD65CB691D56F272001110B1 /* SJGIFSearcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJGIFSearcherTests.swift; sourceTree = "<group>"; };
+		AD65CB6B1D56F272001110B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD65CB701D56F272001110B1 /* SJGIFSearcherUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SJGIFSearcherUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD65CB741D56F272001110B1 /* SJGIFSearcherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SJGIFSearcherUITests.swift; sourceTree = "<group>"; };
+		AD65CB761D56F272001110B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD84C7561D5833BE003ECEDE /* SJGIFModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJGIFModel.swift; sourceTree = "<group>"; };
+		AD84C75B1D5833E7003ECEDE /* SJGIFViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJGIFViewModel.swift; sourceTree = "<group>"; };
+		AE83E758A400DC6ADC1A71B8 /* Pods_SJGIFSearcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SJGIFSearcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA9FC21A9CD144E3A7D52FED /* Pods-SJGIFSearcher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJGIFSearcher.release.xcconfig"; path = "Pods/Target Support Files/Pods-SJGIFSearcher/Pods-SJGIFSearcher.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AD65CB4B1D56F270001110B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3732E68BA7DF39DF5DD9C2D /* Pods_SJGIFSearcher.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD65CB621D56F272001110B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD65CB6D1D56F272001110B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		81BE01891D5BA69D00BB8F91 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				81BE018A1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AD34FC361D5C2AB50019E415 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				AD34FC371D5C2AB50019E415 /* SJTableViewController.swift */,
+				AD34FC391D5C2AF60019E415 /* SJDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AD65CB451D56F270001110B1 = {
+			isa = PBXGroup;
+			children = (
+				AD65CB501D56F271001110B1 /* SJGIFSearcher */,
+				AD65CB681D56F272001110B1 /* SJGIFSearcherTests */,
+				AD65CB731D56F272001110B1 /* SJGIFSearcherUITests */,
+				AD65CB4F1D56F270001110B1 /* Products */,
+				CEF70299A8BC22D40351A878 /* Pods */,
+				F471FD6266C3661C146F1B85 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AD65CB4F1D56F270001110B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AD65CB4E1D56F270001110B1 /* SJGIFSearcher.app */,
+				AD65CB651D56F272001110B1 /* SJGIFSearcherTests.xctest */,
+				AD65CB701D56F272001110B1 /* SJGIFSearcherUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AD65CB501D56F271001110B1 /* SJGIFSearcher */ = {
+			isa = PBXGroup;
+			children = (
+				AD34FC361D5C2AB50019E415 /* Controller */,
+				81BE01891D5BA69D00BB8F91 /* View */,
+				AD84C75A1D5833E7003ECEDE /* ViewModel */,
+				AD84C7551D5833BE003ECEDE /* Model */,
+				AD65CB511D56F271001110B1 /* AppDelegate.swift */,
+				817562E51D590AFF005907C9 /* SJNetworkingClient.swift */,
+				AD65CB551D56F271001110B1 /* Main.storyboard */,
+				AD65CB5B1D56F271001110B1 /* Assets.xcassets */,
+				AD65CB5D1D56F271001110B1 /* LaunchScreen.storyboard */,
+				AD65CB601D56F271001110B1 /* Info.plist */,
+				AD65CB581D56F271001110B1 /* SJGIFSearcher.xcdatamodeld */,
+			);
+			path = SJGIFSearcher;
+			sourceTree = "<group>";
+		};
+		AD65CB681D56F272001110B1 /* SJGIFSearcherTests */ = {
+			isa = PBXGroup;
+			children = (
+				AD65CB691D56F272001110B1 /* SJGIFSearcherTests.swift */,
+				AD65CB6B1D56F272001110B1 /* Info.plist */,
+			);
+			path = SJGIFSearcherTests;
+			sourceTree = "<group>";
+		};
+		AD65CB731D56F272001110B1 /* SJGIFSearcherUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AD65CB741D56F272001110B1 /* SJGIFSearcherUITests.swift */,
+				AD65CB761D56F272001110B1 /* Info.plist */,
+			);
+			path = SJGIFSearcherUITests;
+			sourceTree = "<group>";
+		};
+		AD84C7551D5833BE003ECEDE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AD84C7561D5833BE003ECEDE /* SJGIFModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AD84C75A1D5833E7003ECEDE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AD84C75B1D5833E7003ECEDE /* SJGIFViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CEF70299A8BC22D40351A878 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F082A6DF29345B067822D2E /* Pods-SJGIFSearcher.debug.xcconfig */,
+				FA9FC21A9CD144E3A7D52FED /* Pods-SJGIFSearcher.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F471FD6266C3661C146F1B85 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AE83E758A400DC6ADC1A71B8 /* Pods_SJGIFSearcher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AD65CB4D1D56F270001110B1 /* SJGIFSearcher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD65CB791D56F272001110B1 /* Build configuration list for PBXNativeTarget "SJGIFSearcher" */;
+			buildPhases = (
+				7BD317378E7DE104A177B6E9 /* [CP] Check Pods Manifest.lock */,
+				AD65CB4A1D56F270001110B1 /* Sources */,
+				AD65CB4B1D56F270001110B1 /* Frameworks */,
+				AD65CB4C1D56F270001110B1 /* Resources */,
+				A9C297893973ABC12F936BEE /* [CP] Embed Pods Frameworks */,
+				6DAD25961062BEFBCECA11D6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SJGIFSearcher;
+			productName = SJGIFSearcher;
+			productReference = AD65CB4E1D56F270001110B1 /* SJGIFSearcher.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AD65CB641D56F272001110B1 /* SJGIFSearcherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD65CB7C1D56F272001110B1 /* Build configuration list for PBXNativeTarget "SJGIFSearcherTests" */;
+			buildPhases = (
+				AD65CB611D56F272001110B1 /* Sources */,
+				AD65CB621D56F272001110B1 /* Frameworks */,
+				AD65CB631D56F272001110B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD65CB671D56F272001110B1 /* PBXTargetDependency */,
+			);
+			name = SJGIFSearcherTests;
+			productName = SJGIFSearcherTests;
+			productReference = AD65CB651D56F272001110B1 /* SJGIFSearcherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AD65CB6F1D56F272001110B1 /* SJGIFSearcherUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AD65CB7F1D56F272001110B1 /* Build configuration list for PBXNativeTarget "SJGIFSearcherUITests" */;
+			buildPhases = (
+				AD65CB6C1D56F272001110B1 /* Sources */,
+				AD65CB6D1D56F272001110B1 /* Frameworks */,
+				AD65CB6E1D56F272001110B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AD65CB721D56F272001110B1 /* PBXTargetDependency */,
+			);
+			name = SJGIFSearcherUITests;
+			productName = SJGIFSearcherUITests;
+			productReference = AD65CB701D56F272001110B1 /* SJGIFSearcherUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD65CB461D56F270001110B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = SJL;
+				TargetAttributes = {
+					AD65CB4D1D56F270001110B1 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					AD65CB641D56F272001110B1 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = AD65CB4D1D56F270001110B1;
+					};
+					AD65CB6F1D56F272001110B1 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = AD65CB4D1D56F270001110B1;
+					};
+				};
+			};
+			buildConfigurationList = AD65CB491D56F270001110B1 /* Build configuration list for PBXProject "SJGIFSearcher" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AD65CB451D56F270001110B1;
+			productRefGroup = AD65CB4F1D56F270001110B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AD65CB4D1D56F270001110B1 /* SJGIFSearcher */,
+				AD65CB641D56F272001110B1 /* SJGIFSearcherTests */,
+				AD65CB6F1D56F272001110B1 /* SJGIFSearcherUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AD65CB4C1D56F270001110B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD65CB5F1D56F271001110B1 /* LaunchScreen.storyboard in Resources */,
+				AD65CB5C1D56F271001110B1 /* Assets.xcassets in Resources */,
+				AD65CB571D56F271001110B1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD65CB631D56F272001110B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD65CB6E1D56F272001110B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6DAD25961062BEFBCECA11D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SJGIFSearcher/Pods-SJGIFSearcher-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BD317378E7DE104A177B6E9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A9C297893973ABC12F936BEE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SJGIFSearcher/Pods-SJGIFSearcher-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AD65CB4A1D56F270001110B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD84C7571D5833BF003ECEDE /* SJGIFModel.swift in Sources */,
+				AD84C75C1D5833E7003ECEDE /* SJGIFViewModel.swift in Sources */,
+				817562E61D590AFF005907C9 /* SJNetworkingClient.swift in Sources */,
+				AD34FC381D5C2AB50019E415 /* SJTableViewController.swift in Sources */,
+				AD65CB5A1D56F271001110B1 /* SJGIFSearcher.xcdatamodeld in Sources */,
+				AD65CB521D56F271001110B1 /* AppDelegate.swift in Sources */,
+				AD34FC3A1D5C2AF60019E415 /* SJDetailViewController.swift in Sources */,
+				81BE018B1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD65CB611D56F272001110B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD65CB6A1D56F272001110B1 /* SJGIFSearcherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD65CB6C1D56F272001110B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD65CB751D56F272001110B1 /* SJGIFSearcherUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AD65CB671D56F272001110B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD65CB4D1D56F270001110B1 /* SJGIFSearcher */;
+			targetProxy = AD65CB661D56F272001110B1 /* PBXContainerItemProxy */;
+		};
+		AD65CB721D56F272001110B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AD65CB4D1D56F270001110B1 /* SJGIFSearcher */;
+			targetProxy = AD65CB711D56F272001110B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AD65CB551D56F271001110B1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD65CB561D56F271001110B1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AD65CB5D1D56F271001110B1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AD65CB5E1D56F271001110B1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AD65CB771D56F272001110B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD65CB781D56F272001110B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AD65CB7A1D56F272001110B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F082A6DF29345B067822D2E /* Pods-SJGIFSearcher.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sungjin Lee (A8M6G56PU3)";
+				INFOPLIST_FILE = SJGIFSearcher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "28747ab6-f03f-4cca-ad11-3cc151c4bdd8";
+			};
+			name = Debug;
+		};
+		AD65CB7B1D56F272001110B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA9FC21A9CD144E3A7D52FED /* Pods-SJGIFSearcher.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sungjin Lee (A8M6G56PU3)";
+				INFOPLIST_FILE = SJGIFSearcher/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "28747ab6-f03f-4cca-ad11-3cc151c4bdd8";
+			};
+			name = Release;
+		};
+		AD65CB7D1D56F272001110B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SJGIFSearcherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SJGIFSearcher.app/SJGIFSearcher";
+			};
+			name = Debug;
+		};
+		AD65CB7E1D56F272001110B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SJGIFSearcherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SJGIFSearcher.app/SJGIFSearcher";
+			};
+			name = Release;
+		};
+		AD65CB801D56F272001110B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SJGIFSearcherUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SJGIFSearcher;
+			};
+			name = Debug;
+		};
+		AD65CB811D56F272001110B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SJGIFSearcherUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcherUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = SJGIFSearcher;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AD65CB491D56F270001110B1 /* Build configuration list for PBXProject "SJGIFSearcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD65CB771D56F272001110B1 /* Debug */,
+				AD65CB781D56F272001110B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD65CB791D56F272001110B1 /* Build configuration list for PBXNativeTarget "SJGIFSearcher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD65CB7A1D56F272001110B1 /* Debug */,
+				AD65CB7B1D56F272001110B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD65CB7C1D56F272001110B1 /* Build configuration list for PBXNativeTarget "SJGIFSearcherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD65CB7D1D56F272001110B1 /* Debug */,
+				AD65CB7E1D56F272001110B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AD65CB7F1D56F272001110B1 /* Build configuration list for PBXNativeTarget "SJGIFSearcherUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD65CB801D56F272001110B1 /* Debug */,
+				AD65CB811D56F272001110B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AD65CB581D56F271001110B1 /* SJGIFSearcher.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AD65CB591D56F271001110B1 /* SJGIFSearcher.xcdatamodel */,
+			);
+			currentVersion = AD65CB591D56F271001110B1 /* SJGIFSearcher.xcdatamodel */;
+			path = SJGIFSearcher.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = AD65CB461D56F270001110B1 /* Project object */;
+}
