@@ -3,9 +3,11 @@ SJGIFSearcher is a [Giphy API](https://api.giphy.com) client for iOS in Swift.<b
 
 ##Features
 ![image](ScreenShots/trending%2Brating.PNG)![image](ScreenShots/search.PNG)
-- Providing Giphy's API endpoints: search, trending<br>
+- Giphy's API endpoints: trending, search<br>
+- Filtering to only show family friendly gifs (rated y,g, or pg). <br>
 - [MVVM pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)<br>
 - Auto layout<br>
+
 
 ##Usage
 To run this project, clone the repo, and run "pod install" first.<br>
