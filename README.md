@@ -7,9 +7,9 @@ You should read about [Giphy's Access and API keys here](https://github.com/Giph
 <br>
 
 
-##Requirements
-- AlamoFire<br>
-- Gifu<br>
+##Dependencies
+- [AlamoFire](https://github.com/Alamofire/Alamofire)<br>
+- [Gifu](https://github.com/kaishin/Gifu)<br>
 
 ##Features
 - Providing Giphy's API endpoints: search, trending<br>
