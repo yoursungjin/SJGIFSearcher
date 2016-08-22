@@ -22,4 +22,6 @@ You need to read about [Giphy's Access and API keys](https://github.com/Giphy/Gi
 
 
 ##Author
-Sungjin Lee yoursungjin@gmail.com sungjinlee0417@gmail.com
+Sungjin Lee<br> 
+yoursungjin@gmail.com<br> 
+sungjinlee0417@gmail.com
