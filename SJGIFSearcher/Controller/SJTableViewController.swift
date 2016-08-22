@@ -19,16 +19,17 @@ class SJTableViewController: UIViewController {
     @IBOutlet weak var ratingPicker: UIPickerView!
     @IBOutlet weak var pickerHolder: UIView!
     
-    let pickerData = ["g", "y", "pg", "pg-13", "r"] //rating
+    let pickerData = ["G", "Y", "PG", "PG-13", "R"] //rating
     var pickerVisible = false
-    var targetRating = "g"
-    var tempPickedTargetRating = "g"
-    
-    let networkingClient: SJNetworkingClient = SJNetworkingClient()
+    var currentRating = ""
+    var newRating = "G"
+   
+    let networkingClient = SJNetworkingClient.sharedInstance
     
     var gifViewModelsForTrending: [SJGIFViewModel] = []
     var gifViewModelsForSearch: [SJGIFViewModel] = []
-    var query = ""
+    
+    var currentQuery = ""
     
     let searchController = UISearchController(searchResultsController: nil)
     var searchActive = false
@@ -39,10 +40,24 @@ class SJTableViewController: UIViewController {
     
     var searchTerm = ""
     
+    let refreshControl = UIRefreshControl()
+    
+    
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //networkingClient KVO
+        networkingClient.addObserver(self, forKeyPath:"isAllLoaded", options:.New, context:nil)
+        networkingClient.addObserver(self, forKeyPath:"isGifViewModelsSet", options:.New, context:nil)
+        
+        //refreshControl
+        refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.addSubview(refreshControl)
 
+        //tableView
+        tableViewSetting()
+        
         // Setup the Search Controller
         searchController.searchBar.delegate = self
         definesPresentationContext = true
@@ -53,8 +68,10 @@ class SJTableViewController: UIViewController {
         ratingPicker.dataSource = self
         ratingPicker.delegate = self
         pickerHolder.alpha = 0.0
+
         
-        getTrending(withRating:targetRating) //default "g"
+        //get Data
+        getTrending(withRating:"G") //default "g"
         
         
         //detailViewController
@@ -66,42 +83,114 @@ class SJTableViewController: UIViewController {
         //navigationItem
         updateNavigationItemTitle()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Rating", style:.Plain , target: self, action: #selector(SJTableViewController.onClickRatingButton(_:)))
+        navigationItem.leftBarButtonItem = nil
+        
         
     }
     
-    func updateNavigationItemTitle() {
-        var mode = ""
+    
+    func tableViewSetting() {
+        tableView.dataSource = nil
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
+        
+        let messageLabel = UILabel(frame:CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height))
+        messageLabel.text = "No data is currently available."
+        messageLabel.textColor = UIColor.blackColor()
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignment.Center
+        messageLabel.font = UIFont (name: "Palatino-Italic", size: 20)
+        messageLabel.sizeToFit()
+        tableView.backgroundView = messageLabel;
+        
+    }
+
+    
+    func refresh(sender:UIRefreshControl) {
+        print("refresh")
         switch displayMode {
-            
         case .Trending:
-            mode = "Trending"
+            forceToGetTrending(withRating: currentRating)
             break
         case .Search:
-            mode = "Search"
+            forceToGetSearch(query: currentQuery, rating:currentRating)
             break
         }
-        navigationItem.title = "SJGif " + mode + " : " + targetRating
+    }
+
+
+    func updateNavigationItemTitle() {
+        
+        var plainString = ""
+        
+        switch displayMode {
+    
+        case .Trending:
+            plainString = "Trending" + " in " + currentRating
+            break
+        case .Search:
+            plainString = "Search" + " in " + currentRating
+            break
+        }
+        
+        let attributedString = NSMutableAttributedString(string:plainString)
+        let rangeOfTargetString = (plainString as NSString).rangeOfString(" in ")
+        attributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.SJThemeColor() , range: rangeOfTargetString)
+
+        
+        let titleLabel = UILabel()
+        titleLabel.attributedText = attributedString
+        titleLabel.sizeToFit()
+        
+        navigationItem.titleView = titleLabel
     }
     
+    
+    // MARK: - Giphy Endpoints
     func getTrending(withRating rating:String) {
-        print("trending with rating:" + rating)
-        networkingClient.trendingGIFs(limit:10, rating:rating) {
+        if currentRating == rating {
+            print("no need to update")
+            return
+        }
+        refreshControl.beginRefreshingManually()
+        
+        forceToGetTrending(withRating: rating)
+    }
+    
+    func forceToGetTrending(withRating rating:String) {
+        currentRating = rating
+        print("trending with rating.lowercaseString:" + currentRating.lowercaseString)
+        networkingClient.resetToReload()
+        networkingClient.trendingGIFs(limit:10, rating:currentRating.lowercaseString) {
             results in
             self.gifViewModelsForTrending = results
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                self.tableView.reloadData();
-            })
         }
     }
     
+    
     func getSearch(query query: String, rating:String) {
-        print("search_query:" + query + " rating:" + rating)
-        networkingClient.searchGIFs(query:query, limit:10, rating:rating) {
+       
+        if currentQuery == query && currentRating == rating {
+            print("no need to update")
+            return
+        }
+        refreshControl.beginRefreshingManually()
+
+        forceToGetSearch(query: query, rating: rating)
+    }
+    
+    
+    func forceToGetSearch(query query: String, rating:String) {
+        currentQuery = query
+        currentRating = rating
+        print("search_query:" + currentQuery + " rating.lowercaseString:" + currentRating.lowercaseString)
+        networkingClient.resetToReload()
+        networkingClient.searchGIFs(query:currentQuery, limit:10, rating:currentRating.lowercaseString) {
             results in
             self.gifViewModelsForSearch = results
-            NSOperationQueue.mainQueue().addOperationWithBlock({
-                self.tableView.reloadData();
-            })
+            if self.gifViewModelsForSearch.count == 0 {
+                self.networkingClient.isAllLoaded = true
+                print("No search result")
+            }
         }
     }
     
@@ -139,6 +228,23 @@ class SJTableViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - KVO
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        if networkingClient.isAllLoaded && networkingClient.isGifViewModelsSet {
+            tableView.dataSource = self
+            tableView.reloadData()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.refreshControl.endRefreshing()
+            }
+        }
+    }
+    
+    
+    deinit {
+        networkingClient.removeObserver(self, forKeyPath: "isAllLoaded")
+        networkingClient.removeObserver(self, forKeyPath: "isGifViewModelsSet")
+    }
 }
 
 
@@ -146,7 +252,7 @@ extension SJTableViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table View
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
+         return 1
     }
     
     
@@ -163,6 +269,7 @@ extension SJTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: SJGIFTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SJGIFTableViewCell
         
+        
         let gifViewModel: SJGIFViewModel
         
         switch displayMode {
@@ -176,27 +283,10 @@ extension SJTableViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         //gifImageView
-        if  gifViewModel.imageData != nil {
-            //print("imageData available")
-            cell.gifImageView.animateWithImageData(gifViewModel.imageData!)
-        } else {
-            let url = gifViewModel.url
-            
-            let request = NSURLRequest(URL:url)
-            let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-            let session = NSURLSession(configuration: config)
-            
-            let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    if let data = data {
-                        cell.gifImageView.animateWithImageData(data)
-                        gifViewModel.imageData = data
-                        
-                    }
-                }
-            })
-            task.resume()
+        dispatch_async(dispatch_get_main_queue()) {
+            if let imageData = gifViewModel.imageData {
+                cell.gifImageView.animateWithImageData(imageData)
+            }
         }
         
         //tags
@@ -208,13 +298,14 @@ extension SJTableViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return false
     }
+
 }
 
 
 
 extension SJTableViewController: UISearchBarDelegate {
-    // MARK: - UISearchBar Delegate
     
+    // MARK: - UISearchBar Delegate
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         let searchBar = searchController.searchBar
         let terms:[String]
@@ -225,28 +316,42 @@ extension SJTableViewController: UISearchBarDelegate {
             terms = []
         }
         
-        query = ""
+        var newQuery = ""
         let numOfElements = terms.count
         for i in 0  ..< numOfElements - 1 {
-            query += terms[i] + "+"
+            newQuery += terms[i] + "+"
         }
-        query += terms[numOfElements - 1]
+        newQuery += terms[numOfElements - 1]
         
-        
-        getSearch(query:query , rating: targetRating)
-        searchController.dismissViewControllerAnimated(true) { 
-            
-        }
         displayMode = .Search
         updateNavigationItemTitle()
+        
+        getSearch(query:newQuery , rating: currentRating)
+        searchController.dismissViewControllerAnimated(true,completion: nil)
+
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style:.Plain , target: self, action: #selector(SJTableViewController.onClickCancelButton(_:)))
     }
     
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        if searchController.searchBar.text == "" {
+            returnToTrendingMode()
+        }
+    }
     
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func onClickCancelButton(sender:UIBarButtonItem) {
+        returnToTrendingMode()
+    }
+    
+    func returnToTrendingMode() {
         displayMode = .Trending
         updateNavigationItemTitle()
-        self.tableView.reloadData()
+        tableView.reloadData()
+        navigationItem.leftBarButtonItem = nil
+        searchController.searchBar.text = ""
     }
+
+    
 }
 
 
@@ -267,29 +372,25 @@ extension SJTableViewController: UIPickerViewDataSource,UIPickerViewDelegate {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        tempPickedTargetRating = pickerData[row]
+        newRating = pickerData[row]
     }
     
     func onClickRatingButton(sender:UIBarButtonItem) {
-        if (pickerVisible) {
+        if pickerVisible {
             UIView.animateWithDuration(0.25, animations: {
                 self.pickerHolder.alpha = 0.0
             })
             sender.title = "Rating"
             
-            if (targetRating  == tempPickedTargetRating) {
-                print("don't need to update gifs")
-            } else {
-                 targetRating = tempPickedTargetRating
-                switch displayMode {
-                case .Trending:
-                    getTrending(withRating:targetRating)
-                    break
-                case .Search:
-                    getSearch(query:query , rating:targetRating)
-                    break
-                }
+            switch displayMode {
+            case .Trending:
+                getTrending(withRating:newRating)
+                break
+            case .Search:
+                getSearch(query:currentQuery , rating:newRating)
+                break
             }
+            
         } else {
             UIView.animateWithDuration(0.25, animations: {
                 self.pickerHolder.alpha = 1.0
@@ -300,4 +401,14 @@ extension SJTableViewController: UIPickerViewDataSource,UIPickerViewDelegate {
         updateNavigationItemTitle()
     }
 
+
+}
+
+extension UIRefreshControl {
+    func beginRefreshingManually() {
+        if let scrollView = superview as? UIScrollView {
+            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y - frame.height), animated: true)
+        }
+        beginRefreshing()
+    }
 }

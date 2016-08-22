@@ -42,13 +42,18 @@ class SJDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        //gifImageView
-        let ratio:CGFloat = gifViewModel!.height/gifViewModel!.width
-        let screenWidth = UIScreen.mainScreen().bounds.width;
-        gifImageView.frame.size = CGSize(width: screenWidth, height: screenWidth * ratio)
-     
+        
+        if let gifViewModel = gifViewModel {
+            //gifImageView
+            if let height = gifViewModel.height, width = gifViewModel.width {
+                let ratio:CGFloat = height/width
+                let screenWidth = UIScreen.mainScreen().bounds.width;
+                gifImageView.frame.size = CGSize(width: screenWidth, height: screenWidth * ratio)
+            }
+        }
         //tag
         let labelY = gifImageView.frame.origin.y + gifImageView.frame.size.height
         detailDescriptionLabel.frame.origin = CGPoint(x :0, y:labelY)
