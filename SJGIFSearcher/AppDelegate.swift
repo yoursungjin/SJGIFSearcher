@@ -24,7 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         UISearchBar.appearance().barTintColor = UIColor.SJThemeColor()
         UISearchBar.appearance().tintColor = UIColor.whiteColor()
-        UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).tintColor = UIColor.SJThemeColor()
+        if #available(iOS 9.0, *) {
+            UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).tintColor = UIColor.SJThemeColor()
+        } else {
+            // Fallback on earlier versions
+        }
 
     
         return true

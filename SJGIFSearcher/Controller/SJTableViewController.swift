@@ -40,8 +40,7 @@ class SJTableViewController: UIViewController {
     
     var searchTerm = ""
     
-    let refreshControl = UIRefreshControl()
-    
+    let indicatorView = UIActivityIndicatorView()
     
     // MARK: - View Setup
     override func viewDidLoad() {
@@ -50,12 +49,7 @@ class SJTableViewController: UIViewController {
         //networkingClient KVO
         networkingClient.addObserver(self, forKeyPath:"isAllLoaded", options:.New, context:nil)
         networkingClient.addObserver(self, forKeyPath:"isGifViewModelsSet", options:.New, context:nil)
-        
-        //refreshControl
-        refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        tableView.addSubview(refreshControl)
 
-        //tableView
         tableViewSetting()
         
         // Setup the Search Controller
@@ -63,7 +57,7 @@ class SJTableViewController: UIViewController {
         definesPresentationContext = true
         searchController.dimsBackgroundDuringPresentation = true
         tableView.tableHeaderView = searchController.searchBar
-        
+
         //ratingPicker
         ratingPicker.dataSource = self
         ratingPicker.delegate = self
@@ -93,28 +87,21 @@ class SJTableViewController: UIViewController {
         tableView.dataSource = nil
         tableView.separatorStyle = UITableViewCellSeparatorStyle.None;
         
-        let messageLabel = UILabel(frame:CGRectMake(0, 0, view.bounds.size.width, view.bounds.size.height))
-        messageLabel.text = "No data is currently available."
-        messageLabel.textColor = UIColor.blackColor()
-        messageLabel.numberOfLines = 0;
-        messageLabel.textAlignment = NSTextAlignment.Center
-        messageLabel.font = UIFont (name: "Palatino-Italic", size: 20)
-        messageLabel.sizeToFit()
-        tableView.backgroundView = messageLabel;
-        
-    }
+        let containerView = UIView()
 
-    
-    func refresh(sender:UIRefreshControl) {
-        print("refresh")
-        switch displayMode {
-        case .Trending:
-            forceToGetTrending(withRating: currentRating)
-            break
-        case .Search:
-            forceToGetSearch(query: currentQuery, rating:currentRating)
-            break
-        }
+        let logoImagView = UIImageView(image: UIImage(named:"gifHubLogo"))
+        let logoImagViewSizeWidth = view.frame.size.width * 0.7
+        logoImagView.frame = CGRectMake((view.frame.width - logoImagViewSizeWidth)/2,(view.frame.height - logoImagViewSizeWidth)/2,logoImagViewSizeWidth,logoImagViewSizeWidth)
+        containerView.addSubview(logoImagView)
+        
+        indicatorView.hidesWhenStopped = true
+        indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+        indicatorView.center = view.center;
+        containerView.addSubview(indicatorView)
+
+        tableView.backgroundView = containerView
+        indicatorView.startAnimating()
+        
     }
 
 
@@ -147,16 +134,10 @@ class SJTableViewController: UIViewController {
     
     // MARK: - Giphy Endpoints
     func getTrending(withRating rating:String) {
-        if currentRating == rating {
-            print("no need to update")
-            return
-        }
-        refreshControl.beginRefreshingManually()
         
-        forceToGetTrending(withRating: rating)
-    }
-    
-    func forceToGetTrending(withRating rating:String) {
+        indicateLoading()
+        
+        //fetch data
         currentRating = rating
         print("trending with rating.lowercaseString:" + currentRating.lowercaseString)
         networkingClient.resetToReload()
@@ -168,18 +149,9 @@ class SJTableViewController: UIViewController {
     
     
     func getSearch(query query: String, rating:String) {
-       
-        if currentQuery == query && currentRating == rating {
-            print("no need to update")
-            return
-        }
-        refreshControl.beginRefreshingManually()
-
-        forceToGetSearch(query: query, rating: rating)
-    }
-    
-    
-    func forceToGetSearch(query query: String, rating:String) {
+        
+        indicateLoading()
+        
         currentQuery = query
         currentRating = rating
         print("search_query:" + currentQuery + " rating.lowercaseString:" + currentRating.lowercaseString)
@@ -189,12 +161,34 @@ class SJTableViewController: UIViewController {
             self.gifViewModelsForSearch = results
             if self.gifViewModelsForSearch.count == 0 {
                 self.networkingClient.isAllLoaded = true
-                print("No search result")
+                print("No search results")
+                let alert = UIAlertController(title: "Alert", message: "No search results", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             }
         }
+
     }
     
 
+    func indicateLoading() {
+        switch displayMode {
+            
+        case .Trending:
+            gifViewModelsForTrending = []
+            break
+        case .Search:
+            
+            gifViewModelsForSearch = []
+            break
+        }
+        
+        tableView.reloadData()
+        indicatorView.startAnimating()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -211,11 +205,11 @@ class SJTableViewController: UIViewController {
                 switch displayMode {
                     
                 case .Trending:
-                    searchTerm = ""
+                    searchTerm = "Share"
                     gifViewModel = gifViewModelsForTrending[indexPath.row]
                     break
                 case .Search:
-                    searchTerm = self.searchTerm
+                    searchTerm = "Share" + " " + self.searchTerm
                     gifViewModel = gifViewModelsForSearch[indexPath.row]
                     break
                 }
@@ -233,9 +227,13 @@ class SJTableViewController: UIViewController {
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if networkingClient.isAllLoaded && networkingClient.isGifViewModelsSet {
             tableView.dataSource = self
+
             tableView.reloadData()
+
+            
             dispatch_async(dispatch_get_main_queue()) {
-                self.refreshControl.endRefreshing()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                self.indicatorView.stopAnimating()
             }
         }
     }
@@ -249,6 +247,7 @@ class SJTableViewController: UIViewController {
 
 
 extension SJTableViewController: UITableViewDelegate, UITableViewDataSource {
+    
     
     // MARK: - Table View
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -328,10 +327,12 @@ extension SJTableViewController: UISearchBarDelegate {
         
         getSearch(query:newQuery , rating: currentRating)
         searchController.dismissViewControllerAnimated(true,completion: nil)
-
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style:.Plain , target: self, action: #selector(SJTableViewController.onClickCancelButton(_:)))
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
     }
+    
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         if searchController.searchBar.text == "" {
@@ -339,14 +340,18 @@ extension SJTableViewController: UISearchBarDelegate {
         }
     }
     
+    
     func onClickCancelButton(sender:UIBarButtonItem) {
         returnToTrendingMode()
     }
     
+    
     func returnToTrendingMode() {
         displayMode = .Trending
+        getTrending(withRating: currentRating)
+      
         updateNavigationItemTitle()
-        tableView.reloadData()
+        
         navigationItem.leftBarButtonItem = nil
         searchController.searchBar.text = ""
     }
@@ -404,11 +409,3 @@ extension SJTableViewController: UIPickerViewDataSource,UIPickerViewDelegate {
 
 }
 
-extension UIRefreshControl {
-    func beginRefreshingManually() {
-        if let scrollView = superview as? UIScrollView {
-            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y - frame.height), animated: true)
-        }
-        beginRefreshing()
-    }
-}

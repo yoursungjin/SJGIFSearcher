@@ -11,8 +11,10 @@
 		81BE018B1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BE018A1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift */; };
 		AD34FC381D5C2AB50019E415 /* SJTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34FC371D5C2AB50019E415 /* SJTableViewController.swift */; };
 		AD34FC3A1D5C2AF60019E415 /* SJDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD34FC391D5C2AF60019E415 /* SJDetailViewController.swift */; };
+		AD5444561D7E29990038DBDE /* CustomInputAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD5444551D7E29990038DBDE /* CustomInputAccessoryView.xib */; };
+		AD5444581D7E30270038DBDE /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5444571D7E30270038DBDE /* CustomInputAccessoryView.swift */; };
+		AD5F40AD1D7E9A9600C28FFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD5F40AB1D7E9A9600C28FFE /* Main.storyboard */; };
 		AD65CB521D56F271001110B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD65CB511D56F271001110B1 /* AppDelegate.swift */; };
-		AD65CB571D56F271001110B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD65CB551D56F271001110B1 /* Main.storyboard */; };
 		AD65CB5A1D56F271001110B1 /* SJGIFSearcher.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AD65CB581D56F271001110B1 /* SJGIFSearcher.xcdatamodeld */; };
 		AD65CB5C1D56F271001110B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD65CB5B1D56F271001110B1 /* Assets.xcassets */; };
 		AD65CB5F1D56F271001110B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD65CB5D1D56F271001110B1 /* LaunchScreen.storyboard */; };
@@ -46,9 +48,11 @@
 		9F082A6DF29345B067822D2E /* Pods-SJGIFSearcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJGIFSearcher.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SJGIFSearcher/Pods-SJGIFSearcher.debug.xcconfig"; sourceTree = "<group>"; };
 		AD34FC371D5C2AB50019E415 /* SJTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJTableViewController.swift; sourceTree = "<group>"; };
 		AD34FC391D5C2AF60019E415 /* SJDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJDetailViewController.swift; sourceTree = "<group>"; };
+		AD5444551D7E29990038DBDE /* CustomInputAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomInputAccessoryView.xib; sourceTree = "<group>"; };
+		AD5444571D7E30270038DBDE /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
+		AD5F40AC1D7E9A9600C28FFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD65CB4E1D56F270001110B1 /* SJGIFSearcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJGIFSearcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD65CB511D56F271001110B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AD65CB561D56F271001110B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD65CB591D56F271001110B1 /* SJGIFSearcher.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SJGIFSearcher.xcdatamodel; sourceTree = "<group>"; };
 		AD65CB5B1D56F271001110B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD65CB5E1D56F271001110B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				81BE018A1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift */,
+				AD5444551D7E29990038DBDE /* CustomInputAccessoryView.xib */,
+				AD5444571D7E30270038DBDE /* CustomInputAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,7 +145,7 @@
 				AD84C7551D5833BE003ECEDE /* Model */,
 				AD65CB511D56F271001110B1 /* AppDelegate.swift */,
 				817562E51D590AFF005907C9 /* SJNetworkingClient.swift */,
-				AD65CB551D56F271001110B1 /* Main.storyboard */,
+				AD5F40AB1D7E9A9600C28FFE /* Main.storyboard */,
 				AD65CB5B1D56F271001110B1 /* Assets.xcassets */,
 				AD65CB5D1D56F271001110B1 /* LaunchScreen.storyboard */,
 				AD65CB601D56F271001110B1 /* Info.plist */,
@@ -308,7 +314,8 @@
 			files = (
 				AD65CB5F1D56F271001110B1 /* LaunchScreen.storyboard in Resources */,
 				AD65CB5C1D56F271001110B1 /* Assets.xcassets in Resources */,
-				AD65CB571D56F271001110B1 /* Main.storyboard in Resources */,
+				AD5444561D7E29990038DBDE /* CustomInputAccessoryView.xib in Resources */,
+				AD5F40AD1D7E9A9600C28FFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +396,7 @@
 				AD65CB521D56F271001110B1 /* AppDelegate.swift in Sources */,
 				AD34FC3A1D5C2AF60019E415 /* SJDetailViewController.swift in Sources */,
 				81BE018B1D5BA6BC00BB8F91 /* SJGIFTableViewCell.swift in Sources */,
+				AD5444581D7E30270038DBDE /* CustomInputAccessoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,10 +432,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AD65CB551D56F271001110B1 /* Main.storyboard */ = {
+		AD5F40AB1D7E9A9600C28FFE /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				AD65CB561D56F271001110B1 /* Base */,
+				AD5F40AC1D7E9A9600C28FFE /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -535,10 +543,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sungjin Lee (A8M6G56PU3)";
 				INFOPLIST_FILE = SJGIFSearcher/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcher;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.gifhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "28747ab6-f03f-4cca-ad11-3cc151c4bdd8";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -547,12 +557,14 @@
 			baseConfigurationReference = FA9FC21A9CD144E3A7D52FED /* Pods-SJGIFSearcher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: sungjin Lee (A8M6G56PU3)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Sungjin Lee (R7664A322W)";
 				INFOPLIST_FILE = SJGIFSearcher/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.SJGIFSearcher;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoursungjin.gifhub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "28747ab6-f03f-4cca-ad11-3cc151c4bdd8";
+				PROVISIONING_PROFILE = "abab83aa-8d43-447a-89a3-a417195f6c0c";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

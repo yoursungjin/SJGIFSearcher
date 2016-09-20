@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7B3-bY-Tpf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7B3-bY-Tpf">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -28,11 +28,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="232"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTt-Nr-jGy" customClass="AnimatableImageView" customModule="Gifu">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eTt-Nr-jGy" customClass="AnimatableImageView" customModule="Gifu">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="a8a-Zg-kFB"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2J-EK-CfC">
-                                                    <rect key="frame" x="0.0" y="198" width="600" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2J-EK-CfC">
+                                                    <rect key="frame" x="0.0" y="200" width="600" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="32" id="gbT-O7-eot"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -43,9 +49,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="r2J-EK-CfC" secondAttribute="trailing" id="PTj-hg-K7y"/>
                                                 <constraint firstItem="eTt-Nr-jGy" firstAttribute="leading" secondItem="9hA-NJ-43M" secondAttribute="leading" id="SgT-gV-RTw"/>
                                                 <constraint firstAttribute="trailing" secondItem="eTt-Nr-jGy" secondAttribute="trailing" id="Shm-0z-aBP"/>
+                                                <constraint firstItem="r2J-EK-CfC" firstAttribute="top" secondItem="eTt-Nr-jGy" secondAttribute="bottom" id="jkE-ph-FcO"/>
                                                 <constraint firstItem="r2J-EK-CfC" firstAttribute="top" secondItem="eTt-Nr-jGy" secondAttribute="bottom" id="nDc-4O-egs"/>
                                                 <constraint firstItem="r2J-EK-CfC" firstAttribute="leading" secondItem="9hA-NJ-43M" secondAttribute="leading" id="yau-yx-i3F"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="nDc-4O-egs"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="gifImageView" destination="eTt-Nr-jGy" id="1GH-3Q-pKM"/>
@@ -132,7 +144,7 @@
         <!--Detail View Controller-->
         <scene sceneID="02l-SZ-TSY">
             <objects>
-                <viewController id="zcN-cK-Cpu" customClass="SJDetailViewController" customModule="SJGIFSearcher" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="zcN-cK-Cpu" customClass="SJDetailViewController" customModule="SJGIFSearcher" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RcO-d3-I8w"/>
                         <viewControllerLayoutGuide type="bottom" id="kP4-1k-p6Y"/>
@@ -141,32 +153,70 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihv-pU-q0E" customClass="AnimatableImageView" customModule="Gifu">
-                                <rect key="frame" x="0.0" y="64" width="600" height="400"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ki-c5-PsD">
-                                <rect key="frame" x="0.0" y="464" width="600" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="yaH-fg-9T2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p37-7c-wvv" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="560"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ihv-pU-q0E" customClass="AnimatableImageView" customModule="Gifu">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="400" id="OoM-O8-EgB"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ki-c5-PsD">
+                                                <rect key="frame" x="0.0" y="400" width="600" height="32"/>
+                                                <color key="backgroundColor" red="0.81568627450980391" green="0.81568627450980391" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="Zl4-xB-GQL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.92156862745098034" green="0.65098039215686276" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="5ki-c5-PsD" firstAttribute="leading" secondItem="p37-7c-wvv" secondAttribute="leading" id="534-fq-R9e"/>
+                                            <constraint firstItem="5ki-c5-PsD" firstAttribute="top" secondItem="ihv-pU-q0E" secondAttribute="bottom" id="9QM-7N-0y3"/>
+                                            <constraint firstAttribute="trailing" secondItem="5ki-c5-PsD" secondAttribute="trailing" id="kX1-B3-Epd"/>
+                                            <constraint firstAttribute="trailing" secondItem="ihv-pU-q0E" secondAttribute="trailing" id="qqa-4U-6lk"/>
+                                            <constraint firstItem="ihv-pU-q0E" firstAttribute="leading" secondItem="p37-7c-wvv" secondAttribute="leading" id="xqI-Kf-VdI"/>
+                                            <constraint firstItem="ihv-pU-q0E" firstAttribute="top" secondItem="p37-7c-wvv" secondAttribute="top" id="zqt-JR-55g"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.92156862745098034" green="0.65098039215686276" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="p37-7c-wvv" secondAttribute="trailing" id="0fL-be-fH6"/>
+                                    <constraint firstItem="p37-7c-wvv" firstAttribute="bottom" secondItem="yaH-fg-9T2" secondAttribute="bottom" id="Qa6-zf-XGC"/>
+                                    <constraint firstItem="p37-7c-wvv" firstAttribute="leading" secondItem="yaH-fg-9T2" secondAttribute="leading" id="VGm-Q2-RhZ"/>
+                                    <constraint firstItem="p37-7c-wvv" firstAttribute="top" secondItem="yaH-fg-9T2" secondAttribute="top" id="gMa-6I-gU4"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5ki-c5-PsD" firstAttribute="leading" secondItem="INP-e0-F34" secondAttribute="leading" id="9Oq-pG-H3a"/>
-                            <constraint firstItem="ihv-pU-q0E" firstAttribute="top" secondItem="RcO-d3-I8w" secondAttribute="bottom" id="XXz-1M-ujB"/>
-                            <constraint firstAttribute="trailing" secondItem="5ki-c5-PsD" secondAttribute="trailing" id="grv-Se-Y2u"/>
-                            <constraint firstAttribute="trailing" secondItem="ihv-pU-q0E" secondAttribute="trailing" id="iFX-g8-9C5"/>
-                            <constraint firstItem="5ki-c5-PsD" firstAttribute="top" secondItem="ihv-pU-q0E" secondAttribute="bottom" id="ruS-0d-lS5"/>
-                            <constraint firstItem="ihv-pU-q0E" firstAttribute="leading" secondItem="INP-e0-F34" secondAttribute="leading" id="sMF-nS-I3S"/>
+                            <constraint firstItem="yaH-fg-9T2" firstAttribute="top" secondItem="RcO-d3-I8w" secondAttribute="bottom" id="3Q3-hf-1SL"/>
+                            <constraint firstItem="yaH-fg-9T2" firstAttribute="leading" secondItem="INP-e0-F34" secondAttribute="leading" id="8KS-Gf-4WP"/>
+                            <constraint firstItem="kP4-1k-p6Y" firstAttribute="top" secondItem="yaH-fg-9T2" secondAttribute="bottom" id="Pse-Yr-P9h"/>
+                            <constraint firstAttribute="trailing" secondItem="yaH-fg-9T2" secondAttribute="trailing" id="Zes-ri-iZe"/>
+                            <constraint firstItem="p37-7c-wvv" firstAttribute="width" secondItem="INP-e0-F34" secondAttribute="width" id="seg-s6-pe7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hsl-y8-bpu">
                         <barButtonItem key="backBarButtonItem" title="Back" id="1kv-Ef-JmY"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="PhW-VW-YIy">
+                            <connections>
+                                <action selector="onClickShare:" destination="zcN-cK-Cpu" id="xTc-6e-xOm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailDescriptionLabel" destination="5ki-c5-PsD" id="Re4-Ts-GZm"/>
                         <outlet property="gifImageView" destination="ihv-pU-q0E" id="04M-H5-Bw0"/>
+                        <outlet property="scrollView" destination="yaH-fg-9T2" id="pcJ-ai-p8m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RhK-ec-Bxs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,6 +238,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7xj-Qs-7fx"/>
+        <segue reference="MlS-x1-dAb"/>
     </inferredMetricsTieBreakers>
 </document>
